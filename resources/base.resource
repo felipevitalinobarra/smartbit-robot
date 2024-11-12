@@ -9,7 +9,6 @@ Start Session
 
     New Browser    browser=chromium    headless=False
     New Page       localhost:3000
-    Wait For Elements State       css=#signup h2 >> text=Faça seu cadastro e venha para a Smartbit!
 
 Finish Session
 

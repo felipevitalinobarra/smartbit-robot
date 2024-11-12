@@ -22,11 +22,7 @@ Should start customer registration
 
     ${account}    Get Fake Account
 
-    Fill Text      id=name        ${account}[name]
-    Fill Text      id=email       ${account}[email]
-    Fill Text      id=cpf         ${account}[cpf]
-
-    Click          css=button >> text=Cadastrar
+    Submit signup form    ${account}
 
     Wait For Elements State    text=Falta pouco para fazer parte da família Smartbit!
     ...    visible    5
@@ -34,62 +30,88 @@ Should start customer registration
 Name field must be required
     [Tags]    required
 
-    Fill Text      id=email       felipe@gmail.com
-    Fill Text      id=cpf         67752995088
+    ${account}    Create Dictionary
+    ...    name=${EMPTY}
+    ...    email=felipe@gmail.com
+    ...    cpf=67752995088
 
-    Click          css=button >> text=Cadastrar
+    Submit signup form    ${account}
 
-    Wait For Elements State    css=form .notice    visible    5
-    Get Text    css=form .notice    equal    Por favor informe o seu nome completo
+    Notice should be    Por favor informe o seu nome completo
 
 Email field must be required
     [Tags]    required
 
-    Fill Text      id=name        Felipe Barra
-    Fill Text      id=cpf         67752995088
+    ${account}    Create Dictionary
+    ...    name=Felipe Barra
+    ...    email=${EMPTY}
+    ...    cpf=67752995088
 
-    Click          css=button >> text=Cadastrar
+    Submit signup form    ${account}
 
-    Wait For Elements State    css=form .notice    visible    5
-    Get Text    css=form .notice    equal    Por favor, informe o seu melhor e-mail
+    Notice should be    Por favor, informe o seu melhor e-mail
 
 CPF field must be required
     [Tags]    required
 
-    Fill Text      id=name        Felipe Barra
-    Fill Text      id=email       felipe@gmail.com
+    ${account}    Create Dictionary
+    ...    name=Felipe Barra
+    ...    email=felipe@gmail.com
+    ...    cpf=${EMPTY}
 
-    Click          css=button >> text=Cadastrar
+    Submit signup form    ${account}
 
-    Wait For Elements State    css=form .notice    visible    5
-    Get Text    css=form .notice    equal    Por favor, informe o seu CPF
+    Notice should be    Por favor, informe o seu CPF
 
 Email in invalid format
     [Tags]    inv_email
 
     FOR    ${email}    IN    @{invalid_emails}
+           ${account}    Create Dictionary
+           ...    name=Felipe Barra
+           ...    email=${email}
+           ...    cpf=67752995088
 
-           Fill Text      id=name        Felipe Barra
-           Fill Text      id=email       ${email}
-           Fill Text      id=cpf         67752995088
+           Submit signup form    ${account}
 
-           Click          css=button >> text=Cadastrar
-
-           Wait For Elements State    css=form .notice    visible    5
-           Get Text    css=form .notice    equal    Oops! O email informado é inválido
+           Notice should be    Oops! O email informado é inválido
     END
 
 CPF in invalid format
     [Tags]    inv_cpf
 
+    
+
     FOR    ${cpf}    IN    @{invalid_cpfs}
+           ${account}    Create Dictionary
+           ...    name=Felipe Barra
+           ...    email=felipe@gmail.com
+           ...    cpf=${cpf}
 
-           Fill Text      id=name        Felipe Barra
-           Fill Text      id=email       felipe@gmail.com
-           Fill Text      id=cpf         ${cpf}
+           Submit signup form    ${account}
 
-           Click          css=button >> text=Cadastrar
+           Notice should be    Oops! O CPF informado é inválido
+    END
 
-           Wait For Elements State    css=form .notice    visible    5
-           Get Text    css=form .notice    equal    Oops! O CPF informado é inválido
-    END    
+*** Keywords ***
+
+Submit signup form
+    [Arguments]    ${account}
+
+    Get Text    css=#signup h2
+    ...         equal
+    ...         Faça seu cadastro e venha para a Smartbit!
+
+    Fill Text      id=name        ${account}[name]
+    Fill Text      id=email       ${account}[email]
+    Fill Text      id=cpf         ${account}[cpf]
+
+    Click          css=button >> text=Cadastrar
+
+Notice should be
+    [Arguments]    ${target}
+
+    ${element}    Set Variable    css=form .notice    
+
+    Wait For Elements State    ${element}    visible    5
+    Get Text    ${element}    equal    ${target}
