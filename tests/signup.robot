@@ -7,15 +7,16 @@ Test Setup       Start Session
 Test Teardown    Finish Session
 
 *** Variables ***
+
+@{invalid_emails}  emailgmail.com    email@@gmail.com    email@.com      email@gmailcom    
+    ...            email@gmail.      email()@gmail.com   email@domain$%.com    
+    ...            email@ gmail.com  email@
+
 @{invalid_cpfs}    000.000.000-00    111.111.111-11    222.222.222-22    123.456.789-00
     ...            999.999.999-99    123.abc.789-00    cpf.test.abc-00   ABC.DEF.GHI-JK
     ...            123.456.789-*0    @@@.###.$$$-%%    123.456.78@-00    123.456.78-00
     ...            12.345.678-90     123.4567.890-00   123456789         123/456/789-00
     ...            123-456-789-00    123.456.789.00    CPF-123-456-789
-
-@{invalid_emails}  emailgmail.com    email@@gmail.com    email@.com      email@gmailcom    
-    ...            email@gmail.      email()@gmail.com   email@domain$%.com    
-    ...            email@ gmail.com  email@
 
 *** Test Cases ***
 Should start customer registration
@@ -25,41 +26,11 @@ Should start customer registration
     Submit signup form    ${account}
     Verify welcome message
 
-Name field must be required
-    [Tags]    required
-
-    ${account}    Create Dictionary
-    ...    name=${EMPTY}
-    ...    email=felipe@gmail.com
-    ...    cpf=67752995088
-
-    Submit signup form    ${account}
-
-    Notice should be    Por favor informe o seu nome completo
-
-Email field must be required
-    [Tags]    required
-
-    ${account}    Create Dictionary
-    ...    name=Felipe Barra
-    ...    email=${EMPTY}
-    ...    cpf=67752995088
-
-    Submit signup form    ${account}
-
-    Notice should be    Por favor, informe o seu melhor e-mail
-
-CPF field must be required
-    [Tags]    required
-
-    ${account}    Create Dictionary
-    ...    name=Felipe Barra
-    ...    email=felipe@gmail.com
-    ...    cpf=${EMPTY}
-
-    Submit signup form    ${account}
-
-    Notice should be    Por favor, informe o seu CPF
+Incomplete registration attempt
+    [Template]      Attempt signup
+    ${EMPTY}        felipe@gmail.com    67752995088    Por favor informe o seu nome completo
+    Felipe Barra    ${EMPTY}            67752995088    Por favor, informe o seu melhor e-mail
+    Felipe Barra    felipe@gmail.com    ${EMPTY}       Por favor, informe o seu CPF    
 
 Email in invalid format
     [Tags]    inv_email
@@ -71,7 +42,6 @@ Email in invalid format
            ...    cpf=67752995088
 
            Submit signup form    ${account}
-
            Notice should be    Oops! O email informado é inválido
     END
 
@@ -85,6 +55,18 @@ CPF in invalid format
            ...    cpf=${cpf}
 
            Submit signup form    ${account}
-
            Notice should be    Oops! O CPF informado é inválido
     END
+
+*** Keywords ***
+
+Attempt signup
+    [Arguments]    ${name}    ${email}    ${cpf}    ${output_message}
+
+    ${account}    Create Dictionary
+    ...    name=${name}
+    ...    email=${email}
+    ...    cpf=${cpf}
+
+    Submit signup form    ${account}
+    Notice should be      ${output_message}
