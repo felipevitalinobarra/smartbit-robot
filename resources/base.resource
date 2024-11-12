@@ -1,8 +1,10 @@
 *** Settings ***
 Documentation        Robot project main file
 
-Library    libs/Account.py
-Library    Browser
+Library     Browser
+Library     libs/Account.py
+
+Resource    pages/Landing.resource
 
 *** Keywords ***
 Start Session
