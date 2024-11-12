@@ -24,7 +24,7 @@ Should start customer registration
 
     Fill Text      id=name        ${account}[name]
     Fill Text      id=email       ${account}[email]
-    Fill Text      id=document    ${account}[document]
+    Fill Text      id=cpf         ${account}[cpf]
 
     Click          css=button >> text=Cadastrar
 
@@ -35,7 +35,7 @@ Name field must be required
     [Tags]    required
 
     Fill Text      id=email       felipe@gmail.com
-    Fill Text      id=document    67752995088
+    Fill Text      id=cpf         67752995088
 
     Click          css=button >> text=Cadastrar
 
@@ -46,7 +46,7 @@ Email field must be required
     [Tags]    required
 
     Fill Text      id=name        Felipe Barra
-    Fill Text      id=document    67752995088
+    Fill Text      id=cpf         67752995088
 
     Click          css=button >> text=Cadastrar
 
@@ -71,7 +71,7 @@ Email in invalid format
 
            Fill Text      id=name        Felipe Barra
            Fill Text      id=email       ${email}
-           Fill Text      id=document    67752995088
+           Fill Text      id=cpf         67752995088
 
            Click          css=button >> text=Cadastrar
 
@@ -86,7 +86,7 @@ CPF in invalid format
 
            Fill Text      id=name        Felipe Barra
            Fill Text      id=email       felipe@gmail.com
-           Fill Text      id=document    ${cpf}
+           Fill Text      id=cpf         ${cpf}
 
            Click          css=button >> text=Cadastrar
 
