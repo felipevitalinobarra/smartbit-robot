@@ -7,11 +7,16 @@ Test Setup       Start Session
 Test Teardown    Finish Session
 
 *** Test Cases ***
-Should start customer registration
+Must register customer registration successfully
+    [Tags]    smoke
 
-    ${account}    Get Fake Account
+    ${account}    Create Dictionary
+    ...    name=Felipe Barra
+    ...    email=felipe@smartbit.com
+    ...    cpf=92195361026
 
-    Submit signup form    ${account}
+    Delete Account By Email    ${account}[email]
+    Submit signup form         ${account}
     Verify welcome message
 
 Incomplete registration attempt

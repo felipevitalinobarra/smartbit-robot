@@ -3,6 +3,7 @@ Documentation        Robot project main file
 
 Library     Browser
 Library     libs/Account.py
+Library     libs/Database.py
 
 Resource    Env.resource
 
