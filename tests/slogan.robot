@@ -5,6 +5,5 @@ Resource    ../resources/base.resource
 
 *** Test Cases ***
 Should display the Slogan on the Landing Page
-    
     Start Session
     Finish Session
