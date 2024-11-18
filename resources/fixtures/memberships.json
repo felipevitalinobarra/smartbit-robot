@@ -1,0 +1,17 @@
+{
+    "create": {
+        "account": {
+            "name": "Ronnie Coleman",
+            "email": "ronnie.coleman@bodybuilder.com",
+            "cpf": "10953144089"
+        },
+        "plan": "Plano Black",
+        "credit_card": {
+            "number": "4242424242424242",
+            "holder": "Ronnie Coleman",
+            "month": "12",
+            "year": "2030",
+            "cvv": "123"
+        }
+    }
+}
