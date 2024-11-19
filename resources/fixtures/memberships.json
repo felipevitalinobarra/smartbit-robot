@@ -2,7 +2,7 @@
     "create": {
         "account": {
             "name": "Ronnie Coleman",
-            "email": "ronnie.coleman@bodybuilder.com",
+            "email": "ronnie.coleman@olympia.com",
             "cpf": "10953144089"
         },
         "plan": "Plano Black",
@@ -12,6 +12,21 @@
             "month": "12",
             "year": "2030",
             "cvv": "123"
+        }
+    },
+    "duplicate": {
+        "account": {
+            "name": "Chris Bumstead",
+            "email": "cbum@olympia.com",
+            "cpf": "93823500040"
+        },
+        "plan": "Plano Smart",
+        "credit_card": {
+            "number": "5555555555554444",
+            "holder": "Chris Bumstead",
+            "month": "05",
+            "year": "2028",
+            "cvv": "696"
         }
     }
 }
