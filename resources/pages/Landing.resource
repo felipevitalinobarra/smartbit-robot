@@ -17,3 +17,9 @@ Submit signup form
     Fill Text      id=cpf         ${account}[cpf]
 
     Click          css=button >> text=Cadastrar
+
+Check slogan on Landing Page
+    ${element}     Set Variable    .headline h2
+
+    Wait For Elements State    ${element}    visible    5
+    Get Text    ${element}    equal    Sua Jornada Fitness Começa aqui!

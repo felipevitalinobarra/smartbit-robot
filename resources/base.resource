@@ -12,9 +12,15 @@ Resource    pages/Landing.resource
 Resource    pages/Welcome.resource
 Resource    pages/Login.resource
 Resource    pages/Accounts.resource
+Resource    pages/Memberships.resource
 
 Resource    pages/components/Toast.resource
 Resource    pages/components/BoxNotice.resource
+Resource    pages/components/Navbar.resource
+
+*** Variables ***
+${ADMIN_EMAIL}        sac@smartbit.com
+${ADMIN_PASS}         pwd123
 
 *** Keywords ***
 Start Session
@@ -34,3 +40,9 @@ Get JSON fixture
     ...    encoding=utf-8
 
     [RETURN]    ${data}[${scenario}]
+
+SignIn Admin
+
+    Go to Login Page
+    Submit Login Form    ${ADMIN_EMAIL}    ${ADMIN_PASS}
+    User is logged in    ${ADMIN_EMAIL}
