@@ -23,13 +23,10 @@ Duplicate Enrollment Must Be Avoided
 
     ${data}    Get JSON fixture    memberships    duplicate
     
-    Delete Account By Email    ${data}[account][email]
-    Insert Account             ${data}[account]
+    Insert Membership    ${data}
 
     SignIn Admin
     Go to memberShips
-    Create new membership      ${data}
-    Sleep    8
     Create new membership      ${data}
     Toast should be            O usuário já possui matrícula.
     

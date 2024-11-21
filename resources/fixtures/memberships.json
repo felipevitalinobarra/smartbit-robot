@@ -5,7 +5,11 @@
             "email": "ronnie.coleman@olympia.com",
             "cpf": "10953144089"
         },
-        "plan": "Plano Black",
+        "plan": {
+            "name": "Plano Black",
+            "id": 2,
+            "price": 79.99
+        },
         "credit_card": {
             "number": "4242424242424242",
             "holder": "Ronnie Coleman",
@@ -20,7 +24,11 @@
             "email": "cbum@olympia.com",
             "cpf": "93823500040"
         },
-        "plan": "Plano Smart",
+        "plan": {
+            "name": "Plano Smart",
+            "id": 1,
+            "price": 99.99
+        },
         "credit_card": {
             "number": "5555555555554444",
             "holder": "Chris Bumstead",
