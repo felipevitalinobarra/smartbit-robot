@@ -30,3 +30,13 @@ Duplicate Enrollment Must Be Avoided
     Create new membership      ${data}
     Toast should be            O usuário já possui matrícula.
     
+Must search by name
+
+    ${data}    Get JSON fixture    memberships    search
+
+    Insert Membership    ${data}
+
+    SignIn Admin
+    Go to memberships
+    Search by name             ${data}[account][name]
+    Should filter by name      ${data}[account][name]

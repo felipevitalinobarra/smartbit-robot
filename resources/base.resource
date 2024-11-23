@@ -3,6 +3,7 @@ Documentation        Robot project main file
 
 Library     JSONLibrary
 Library     Browser
+Library     Collections
 Library     libs/Account.py
 Library     libs/Database.py
 
