@@ -1,0 +1,78 @@
+{
+    "create": {
+        "account": {
+            "name": "Ronnie Coleman",
+            "email": "ronnie.coleman@olympia.com",
+            "cpf": "10953144089"
+        },
+        "plan": {
+            "name": "Plano Black",
+            "id": 2,
+            "price": 79.99
+        },
+        "credit_card": {
+            "number": "4242424242424242",
+            "holder": "Ronnie Coleman",
+            "month": "12",
+            "year": "2030",
+            "cvv": "123"
+        }
+    },
+    "duplicate": {
+        "account": {
+            "name": "Chris Bumstead",
+            "email": "cbum@olympia.com",
+            "cpf": "93823500040"
+        },
+        "plan": {
+            "name": "Plano Smart",
+            "id": 1,
+            "price": 99.99
+        },
+        "credit_card": {
+            "number": "5555555555554444",
+            "holder": "Chris Bumstead",
+            "month": "05",
+            "year": "2028",
+            "cvv": "696"
+        }
+    },
+    "search": {
+        "account": {
+            "name": "Arnold Schwarzenegger",
+            "email": "arnold@olympia.com",
+            "cpf": "22186811022"
+        },
+        "plan": {
+            "name": "Plano Black",
+            "id": 2,
+            "price": 79.99
+        },
+        "credit_card": {
+            "number": "5555555555554444",
+            "holder": "Arnold Schwarzenegger",
+            "month": "05",
+            "year": "2030",
+            "cvv": "456"
+        }
+    },
+    "remove": {
+        "account": {
+            "name": "Leo Stronda",
+            "email": "leo@growth.com",
+            "cpf": "27222685073"
+        },
+        "plan": {
+            "name": "Plano Black",
+            "id": 2,
+            "price": 79.99
+        },
+        "credit_card": {
+            "number": "5200828282828210",
+            "holder": "Leo Stronda",
+            "month": "08",
+            "year": "2032",
+            "cvv": "538"
+        }
+    }
+}
