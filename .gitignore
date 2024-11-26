@@ -1,4 +1,4 @@
-web/results
-mobile/node_modules
+results
+node_modules
 package-lock.json
 package.json
