@@ -1,12 +1,17 @@
 *** Settings ***
 Documentation        Main file of the mobile automated testing project
 
-Library    AppiumLibrary
+Library     AppiumLibrary
+Library     JSONLibrary
+Library     ../../libs/Account.py
+Library     ../../libs/Database.py
 
 Resource    ./actions/account.resource
 Resource    ./actions/login.resource
-Resource    ./actions/menu.resource
 Resource    ./actions/mybody.resource
+
+Resource    ./actions/components/menu.resource
+Resource    ./actions/components/popup.resource
 
 *** Keywords ***
 
@@ -26,3 +31,12 @@ Finish Session
 
     Capture Page Screenshot
     Close Application
+
+Get JSON fixture
+    [Arguments]     ${scenario}
+
+    ${data}    Load Json From File    
+    ...    ${EXECDIR}/resources/fixtures/data.json
+    ...    encoding=utf-8
+
+    [RETURN]    ${data}[${scenario}]
