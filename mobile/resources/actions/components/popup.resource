@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation        pop-up components actions and elements
+Documentation        Pop-up components actions and elements
 
 Library    AppiumLibrary
 

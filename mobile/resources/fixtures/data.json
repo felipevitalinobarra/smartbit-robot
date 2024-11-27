@@ -1,9 +1,30 @@
 {
     "login": {
         "account": {
+            "name": "Rafael Brandão",
+            "email": "brandao@maxtitanium.com.br",
+            "cpf": "38841047054"
+        },
+        "plan": {
+            "name": "Plano Smart",
+            "id": 2,
+            "price": 99.99
+        },
+        "credit_card": {
+            "number": "4242424242424242",
+            "holder": "Rafael Brandão",
+            "month": "03",
+            "year": "2031",
+            "cvv": "199"
+        }
+    },
+    "update": {
+        "account": {
             "name": "Ramon Dino",
             "email": "dino@maxtitanium.com.br",
-            "cpf": "65917559007"
+            "cpf": "65917559007",
+            "weight": 103,
+            "height": 181
         },
         "plan": {
             "name": "Plano Smart",

@@ -6,6 +6,8 @@ Library     JSONLibrary
 Library     ../../libs/Account.py
 Library     ../../libs/Database.py
 
+Resource    ../../services/Service.resource
+
 Resource    ./actions/account.resource
 Resource    ./actions/login.resource
 Resource    ./actions/mybody.resource
