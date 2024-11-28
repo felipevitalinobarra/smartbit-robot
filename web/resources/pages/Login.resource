@@ -1,12 +1,14 @@
 *** Settings ***
 Documentation        Login Page Actions and Elements
 
-Resource    ../Base.resource
+Variables    ../Env.py
+
+Library    Browser
 
 *** Keywords ***
 Go to Login Page
 
-    Go To    ${URL}/login
+    Go To    ${BASE_URL}/login
 
 Submit Login Form
     [Arguments]    ${email}    ${password}

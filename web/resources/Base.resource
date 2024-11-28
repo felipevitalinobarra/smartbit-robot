@@ -1,13 +1,13 @@
 *** Settings ***
 Documentation        Robot project main file
 
+Variables   Env.py
+
 Library     JSONLibrary
 Library     Browser
 Library     Collections
 Library     ../../libs/Account.py
 Library     ../../libs/Database.py
-
-Resource    Env.resource
 
 Resource    pages/Landing.resource
 Resource    pages/Welcome.resource
@@ -28,7 +28,7 @@ ${ADMIN_PASS}         pwd123
 Start Session
 
     New Browser    browser=${BROWSER}    headless=${HEADLESS}
-    New Page       ${URL}
+    New Page       ${BASE_URL}
 
 Finish Session
 

@@ -1,11 +1,16 @@
 import psycopg2
 
-db_conn = """
-    host='aws-0-sa-east-1.pooler.supabase.com'
-    dbname='postgres'
-    user='postgres.dpfnczrgezgcwlvzhtvr'
-    password='PZiT9jeBb4DUEHA3'
-    """
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+db_conn = f"""
+    host='{os.getenv('DB_HOST')}'
+    dbname='{os.getenv('DB_NAME')}'
+    user='{os.getenv('DB_USER')}'
+    password='{os.getenv('DB_PASS')}'
+"""
 
 def execute(query):
     conn = psycopg2.connect(db_conn)

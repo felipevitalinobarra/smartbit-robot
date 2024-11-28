@@ -2,9 +2,7 @@
 Documentation        API Integration Layer
 
 Library    RequestsLibrary
-
-*** Variables ***
-${BASE_URL}    http://localhost:3333
+Variables    Env.py
 
 *** Keywords ***
 Set user token
@@ -13,7 +11,7 @@ Set user token
     ...           password=pwd123
 
     ${resp}    POST
-    ...    ${BASE_URL}/sessions
+    ...    url=${API_URL}/sessions
     ...    json=${payload}
 
     ${token}    Set Variable    Bearer ${resp.json()}[token]
@@ -30,7 +28,7 @@ Get account by name
     ...    name=${name}
 
     ${resp}    GET    
-    ...    url=${BASE_URL}/accounts
+    ...    url=${API_URL}/accounts
     ...    params=${params}
     ...    headers=${headers}
 
