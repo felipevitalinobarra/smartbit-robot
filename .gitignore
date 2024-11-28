@@ -1,4 +1,5 @@
 results
 node_modules
+__pycache__
 package-lock.json
 package.json
