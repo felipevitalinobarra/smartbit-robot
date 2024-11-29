@@ -2,7 +2,7 @@
 
 ## 📖 Introdução  
 
-> Automação de testes para aplicações Web, Mobile e API, utilizando o Robot Framework e Appium, com foco em um sistema de gestão para academias."
+> Automação de testes para aplicações Web, Mobile e API, utilizando o Robot Framework e Appium, com foco em um sistema de gestão para academias.
 
 ---
 
