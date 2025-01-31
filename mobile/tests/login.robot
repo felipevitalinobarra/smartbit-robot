@@ -8,7 +8,7 @@ Test Teardown     Finish Session
 
 *** Test Cases ***
 
-Must log in with document and IP Adress
+Must log in with document and IP Address
 
     ${data}    Get Json Fixture    login
     Insert Membership    ${data}
@@ -20,10 +20,10 @@ Should not log in with an unregistered CPF
     Signin with document    77759247052
     Popup have text         Acesso não autorizado! Entre em contato com a central de atendimento
 
-Should not log in without document
+Should not log in without CPF
     Signin with document    ${EMPTY}
     Popup have text         Informe o número do seu CPF
 
-Should not log in with an invalid document
+Should not log in with an invalid CPF
     Signin with document    12345678910
     Popup have text         CPF inválido, tente novamente
