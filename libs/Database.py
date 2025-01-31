@@ -20,6 +20,7 @@ def execute(query):
     conn.commit()
     conn.close
 
+
 def insert_membership(data):
     account = data["account"]
     plan = data["plan"]
@@ -48,11 +49,13 @@ def insert_membership(data):
     """
     execute(query)
 
+
 def delete_account_by_email(email):
 
     query = f"DELETE FROM accounts WHERE email = '{email}';"
     
     execute(query)
+
 
 def insert_account(account):
     query = f"""
