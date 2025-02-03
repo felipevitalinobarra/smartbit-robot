@@ -16,7 +16,6 @@ Create new membership
 
 Go to memberships form
     Click    css=a[href="/memberships/new"]
-
     Wait For Elements State    css=h1 >> text=Nova Matrícula    
     ...    visible    5
 
@@ -41,13 +40,29 @@ Fill payment card
     Fill Text    css=input[name="card_year"]       ${card}[year]
     Fill Text    css=input[name="card_cvv"]        ${card}[cvv]
 
-Search by name
+Click submit button
+    [Arguments]    ${button_name}
+
+    Click    css=button[type=submit] >> text=${button_name}
+
+Click the back button
+    Click    css=span >> text=Voltar
+    Wait For Elements State    css=h1 >> text=Clientes
+    ...    visible    5
+
+Search enrolment by name
     [Arguments]    ${name}
 
     Fill Text    css=input[placeholder^=Busque]    ${name}
-
     Wait For Elements State    css=strong >> text=Total: 1
     ...    visible    5
+
+Search client by name
+    [Arguments]    ${name}
+
+    Fill Text    css=input[placeholder^=Buscar]    ${name}
+    Wait For Elements State    css=strong >> text=Total: 1
+    ...    visible    5    
 
 Should filter by name
     [Arguments]    ${name}
@@ -66,5 +81,22 @@ Membership should not be visibled
     Wait For Elements State    css=table tbody tr >> text="${name}"
     ...    detached    5
 
-Click submit button
-    Click    css=button[type=submit] >> text=Cadastrar
+Go to membership edit form
+    [Arguments]    ${id}
+
+    Click    css=a[href="/accounts/${id}/edit"]
+    Wait For Elements State    css=h1 >> text=Editar
+    ...    visible    5
+
+Fill out the membership edit form
+    [Arguments]    ${name}    ${email}      ${cpf}
+    Fill Text    css=input[name='name']     ${name}
+    Fill Text    css=input[name='email']    ${email}
+    Fill Text    css=input[name='cpf']      ${cpf}
+
+Membership should be visibled
+    [Arguments]    ${name}
+
+    Wait For Elements State    css=table tbody tr >> text="${name}"
+    ...    visible    5    
+

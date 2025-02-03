@@ -7,7 +7,6 @@ Library    Browser
 
 *** Keywords ***
 Go to Login Page
-
     Go To    ${BASE_URL}/login
 
 Submit Login Form

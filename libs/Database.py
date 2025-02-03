@@ -12,13 +12,20 @@ db_conn = f"""
     password='{os.getenv('DB_PASS')}'
 """
 
-def execute(query):
+def execute(query, fetch=False):
     conn = psycopg2.connect(db_conn)
-
     cur = conn.cursor()
+
     cur.execute(query)
+
+    result = None
+    if fetch: # Se a função precisar de um retorno, busca os dados
+        result = cur.fetchall()
+    
     conn.commit()
     conn.close
+
+    return result if fetch else None
 
 
 def insert_membership(data):
@@ -51,7 +58,6 @@ def insert_membership(data):
 
 
 def delete_account_by_email(email):
-
     query = f"DELETE FROM accounts WHERE email = '{email}';"
     
     execute(query)
@@ -63,3 +69,11 @@ def insert_account(account):
     values ('{account["name"]}', '{account["email"]}', '{account["cpf"]}');
     """
     execute(query)
+
+
+def search_id_by_cpf(cpf):
+    query = f"SELECT id FROM accounts WHERE cpf = '{cpf}'"
+    result = execute(query, fetch=True)
+    
+    return result[0][0] if result else None  # Retorna apenas o ID
+
