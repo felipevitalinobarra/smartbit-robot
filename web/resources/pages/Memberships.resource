@@ -65,3 +65,20 @@ Membership should not be visibled
 
     Wait For Elements State    css=table tbody tr >> text="${name}"
     ...    detached    5
+
+Click submit button
+    Click    css=button[type=submit] >> text=Cadastrar
+
+Form should show required field errors
+    @{errors}    Create List
+    ...    O usuário é obrigatório
+    ...    O plano é obrigatório
+    ...    O cartão de crédito é obrigatório
+    ...    O nome do titular é obrigatório
+    ...    O mês é obrigatório
+    ...    O ano é obrigatório
+    ...    O CVV é obrigatório
+
+    FOR    ${error}    IN    @{errors}
+        Wait For Elements State    css=span >> text="${error}"    visible    5
+    END

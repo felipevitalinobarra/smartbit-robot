@@ -12,7 +12,7 @@ User is logged in
     Wait For Elements State       ${element}    visible    5
     Get Text      ${element}      equal    ${email}
 
-Go to memberships
+Go to memberships page
     Click    css=a[href="/memberships"]
     
     Wait For Elements State    css=h1 >> text=Matrículas    

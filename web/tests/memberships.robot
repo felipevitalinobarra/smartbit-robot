@@ -15,7 +15,7 @@ Should Be Able to Complete a New Subscription
     Insert Account             ${data}[account]
 
     SignIn Admin
-    Go to memberShips
+    Go to memberShips page
     Create new membership      ${data}
     Toast should be            Matrícula cadastrada com sucesso.
 
@@ -26,7 +26,7 @@ Duplicate Enrollment Must Be Avoided
     Insert Membership    ${data}
 
     SignIn Admin
-    Go to memberShips
+    Go to memberShips page
     Create new membership      ${data}
     Toast should be            O usuário já possui matrícula.
     
@@ -37,7 +37,7 @@ Must search by name
     Insert Membership    ${data}
 
     SignIn Admin
-    Go to memberships
+    Go to memberships page
     Search by name             ${data}[account][name]
     Should filter by name      ${data}[account][name]
 
@@ -48,8 +48,15 @@ Must delete a registration
     Insert Membership    ${data}
 
     SignIn Admin
-    Go to memberShips
+    Go to memberShips page
     Request removal by name    ${data}[account][name]
     Confirm removal
     Toast should be    Matrícula removida com sucesso.
     Membership should not be visibled    ${data}[account][name]
+
+Submitting an empty form
+    SignIn Admin
+    Go to memberships page
+    Go to memberships form
+    Click submit button
+    Form should show required field errors
