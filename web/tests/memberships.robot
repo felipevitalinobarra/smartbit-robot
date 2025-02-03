@@ -60,3 +60,10 @@ Submitting an empty form
     Go to memberships form
     Click submit button
     Form should show required field errors
+    ...    O usuário é obrigatório
+    ...    O plano é obrigatório
+    ...    O cartão de crédito é obrigatório
+    ...    O nome do titular é obrigatório
+    ...    O mês é obrigatório
+    ...    O ano é obrigatório
+    ...    O CVV é obrigatório
