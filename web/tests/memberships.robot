@@ -13,18 +13,16 @@ Should Be Able to Complete a New Subscription
     Delete Account By Email    ${data}[account][email]
     Insert Account             ${data}[account]
 
-    SignIn Admin
-    Go to memberShips page
-    Create new membership      ${data}
-    Toast should be            Matrícula cadastrada com sucesso.
+    Initialize Membership Test
+    Create new membership         ${data}
+    Toast should be               Matrícula cadastrada com sucesso.
 
 Duplicate Enrollment Must Be Avoided
     ${data}    Get JSON fixture    memberships    duplicate
     
     Insert Membership    ${data}
 
-    SignIn Admin
-    Go to memberShips page
+    Initialize Membership Test
     Create new membership      ${data}
     Toast should be            O usuário já possui matrícula.
     
@@ -33,8 +31,7 @@ Must search a registration by name
 
     Insert Membership    ${data}
 
-    SignIn Admin
-    Go to memberships page
+    Initialize Membership Test
     Search enrolment by name    ${data}[account][name]
     Should filter by name       ${data}[account][name]
 
@@ -43,18 +40,18 @@ Must delete a registration
 
     Insert Membership    ${data}
 
-    SignIn Admin
-    Go to memberShips page
+    Initialize Membership Test
     Request removal by name    ${data}[account][name]
     Confirm removal
     Toast should be    Matrícula removida com sucesso.
-    Membership should not be visibled    ${data}[account][name]
+    Membership should not be visible    ${data}[account][name]
 
 Must update a registration
     ${data}        Get JSON fixture    memberships    update
     ${new_data}    Get JSON fixture    memberships    new_update
+    ${id}          Search Id By Cpf    ${data}[account][cpf]
+
     Insert Membership    ${data}
-    ${id}    Search Id By Cpf     ${data}[account][cpf]
 
     SignIn Admin
     Search client by name         ${data}[account][name]
@@ -64,13 +61,14 @@ Must update a registration
     Toast should be        Dados atualizados com sucesso.
     Click the back button
     Search client by name            ${new_data}[account][name]
-    Membership should be visibled    ${new_data}[account][name]
+    Membership should be visible    ${new_data}[account][name]
     
 Should Not Allow Update With Empty Mandatory Fields
-    ${data}        Get JSON fixture    memberships    update
-    
+    ${data}    Get JSON fixture     memberships    update
+    ${id}      Search Id By Cpf     ${data}[account][cpf]
+
     Insert Membership    ${data}
-    ${id}    Search Id By Cpf     ${data}[account][cpf]
+    
     SignIn Admin
     Search client by name         ${data}[account][name]
     Go to membership edit form    ${id}
@@ -82,8 +80,7 @@ Should Not Allow Update With Empty Mandatory Fields
     ...    O CPF é obrigatório
 
 Submitting an empty form
-    SignIn Admin
-    Go to memberships page
+    Initialize Membership Test
     Go to memberships form
     Click submit button    button_name=Cadastrar
     Form should show required field errors

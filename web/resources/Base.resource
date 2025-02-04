@@ -27,12 +27,10 @@ ${ADMIN_PASS}         pwd123
 
 *** Keywords ***
 Start Session
-
     New Browser    browser=${BROWSER}    headless=${HEADLESS}
     New Page       ${BASE_URL}
 
 Finish Session
-
     Take Screenshot    fullPage=True
 
 Get JSON fixture
@@ -45,7 +43,10 @@ Get JSON fixture
     [RETURN]    ${data}[${scenario}]
 
 SignIn Admin
-
     Go to Login Page
     Submit Login Form    ${ADMIN_EMAIL}    ${ADMIN_PASS}
     User is logged in    ${ADMIN_EMAIL}
+
+Initialize Membership Test
+    SignIn Admin
+    Go to memberships page

@@ -75,7 +75,7 @@ Request removal by name
 
     Click    xpath=//td[text()="${name}"]/..//button
 
-Membership should not be visibled
+Membership should not be visible
     [Arguments]    ${name}
 
     Wait For Elements State    css=table tbody tr >> text="${name}"
@@ -94,7 +94,7 @@ Fill out the membership edit form
     Fill Text    css=input[name='email']    ${email}
     Fill Text    css=input[name='cpf']      ${cpf}
 
-Membership should be visibled
+Membership should be visible
     [Arguments]    ${name}
 
     Wait For Elements State    css=table tbody tr >> text="${name}"
