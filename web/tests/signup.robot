@@ -40,16 +40,14 @@ Incomplete registration attempt
 Duplicate email attempt
     ${data}    Get JSON fixture    signup    dup_email
 
-    Delete Account By Email    ${data}[account][email]
-    Insert Account             ${data}[account]
+    Insert Account             ${data}
     Submit signup form         ${data}[account]
     Toast should be            O e-mail fornecido já foi cadastrado!
 
 Duplicate cpf attempt
     ${data}    Get JSON fixture    signup    dup_cpf
    
-    Delete Account By Email    ${data}[account][email]
-    Insert Account             ${data}[account]
+    Insert Account             ${data}
 
     Set To Dictionary          ${data}[account]    email    another_email@example.com
     Submit signup form         ${data}[account]
@@ -65,7 +63,7 @@ Email in invalid format
            ...    cpf=67752995088
 
            Submit signup form    ${account}
-           Notice should be    Oops! O email informado é inválido
+           Notice should be      Oops! O email informado é inválido
     END
 
 CPF in invalid format
@@ -78,7 +76,7 @@ CPF in invalid format
            ...    cpf=${cpf}
 
            Submit signup form    ${account}
-           Notice should be    Oops! O CPF informado é inválido
+           Notice should be      Oops! O CPF informado é inválido
     END
 
 *** Keywords ***

@@ -41,36 +41,27 @@ Fill payment card
     Fill Text    css=input[name="card_cvv"]        ${card}[cvv]
 
 Click submit button
-    [Arguments]    ${button_name}
-
-    Click    css=button[type=submit] >> text=${button_name}
+    Click    css=button[type=submit] >> text=Cadastrar
 
 Click the back button
     Click    css=span >> text=Voltar
     Wait For Elements State    css=h1 >> text=Clientes
     ...    visible    5
 
-Search enrolment by name
+Search membership by name
     [Arguments]    ${name}
 
     Fill Text    css=input[placeholder^=Busque]    ${name}
     Wait For Elements State    css=strong >> text=Total: 1
     ...    visible    5
-
-Search client by name
-    [Arguments]    ${name}
-
-    Fill Text    css=input[placeholder^=Buscar]    ${name}
-    Wait For Elements State    css=strong >> text=Total: 1
-    ...    visible    5    
-
-Should filter by name
+  
+Should filter membership by name
     [Arguments]    ${name}
     
     Wait For Elements State    css=table tbody tr >> text=${name}
     ...    visible    5
 
-Request removal by name
+Request membership removal by name
     [Arguments]    ${name}
 
     Click    xpath=//td[text()="${name}"]/..//button
@@ -81,22 +72,8 @@ Membership should not be visible
     Wait For Elements State    css=table tbody tr >> text="${name}"
     ...    detached    5
 
-Go to membership edit form
-    [Arguments]    ${id}
-
-    Click    css=a[href="/accounts/${id}/edit"]
-    Wait For Elements State    css=h1 >> text=Editar
-    ...    visible    5
-
-Fill out the membership edit form
-    [Arguments]    ${name}    ${email}      ${cpf}
-    Fill Text    css=input[name='name']     ${name}
-    Fill Text    css=input[name='email']    ${email}
-    Fill Text    css=input[name='cpf']      ${cpf}
-
 Membership should be visible
     [Arguments]    ${name}
 
     Wait For Elements State    css=table tbody tr >> text="${name}"
-    ...    visible    5    
-
+    ...    visible    5

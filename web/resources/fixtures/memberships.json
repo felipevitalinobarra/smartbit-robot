@@ -74,43 +74,5 @@
             "year": "2032",
             "cvv": "538"
         }
-    },
-    "update": {
-        "account": {
-            "name": "Bitelo",
-            "email": "bitelo@growth.com",
-            "cpf": "25526256065"
-        },
-        "plan": {
-            "name": "Plano Black",
-            "id": 2,
-            "price": 79.99
-        },
-        "credit_card": {
-            "number": "5200828282828210",
-            "holder": "Bitelo",
-            "month": "02",
-            "year": "2035",
-            "cvv": "528"
-        }
-    },
-    "new_update": {
-        "account": {
-            "name": "Willian Bitelo",
-            "email": "willian@growth.com",
-            "cpf": "25526256065"
-        },
-        "plan": {
-            "name": "Plano Smart",
-            "id": 1,
-            "price": 99.99
-        },
-        "credit_card": {
-            "number": "5555555555554444",
-            "holder": "Willian Bitelo",
-            "month": "05",
-            "year": "2040",
-            "cvv": "221"
-        }
     }
 }
